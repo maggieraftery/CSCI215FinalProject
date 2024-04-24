@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charleston Pizza</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+<header>
+    <h1>Charleston Pizza</h1>
+    <nav>
+        <ul>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Directions</a></li>
+            <li><a href="#">Ordering</a></li>
+            <li><a href="#">Reviews</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <div id="slideshow">
+        <img src="pizza1.jpg" class="active" alt="Pizza 1">
+        <img src="pizza2.jpg" alt="Pizza 2">
+        <img src="pizza3.jpg" alt="Pizza 3">
+    </div>
+    <div class="container">
+        <div class="hours">
+            <h2>Hours</h2>
+            <p>Fill in more information here...</p>
+        </div>
+        <div class="reservations">
+            <h2>Reservations</h2>
+            <button id="reservationBtn">Make Reservation</button>
+        </div>
+        <div class="reviews">
+            <h2>Reviews</h2>
+            <p>Fill in more information here...</p>
+        </div>
+        <div id="reservationForm" style="display: none;">
+            <p></p>
+            <input type="text" placeholder="Name">
+            <input type="text" placeholder="Number of Guests">
+            <input type="text" placeholder="Date (YYYY-MM-DD)">
+            <input type="text" placeholder="Time">
+            <button id="submitReservation">Submit</button>
+        </div>
+        <div class="contactInfo">
+            <h2>Contact Us</h2>
+            <p>123 Main Street, City, Country</p>
+            <p>Phone: 123-456-7890</p>
+        </div>
+    </div>
+</main>
+
+<footer>
+
+</footer>
+
+
+<script src="jquery-3.7.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".contactInfo, .hours, .reservations, .reviews").hover(function(){
+            $(this).stop().animate({
+                width: '+=10px',
+                height: '+=10px',
+                fontSize: '+=1px'
+            }, 'fast');
+        }, function(){
+            $(this).stop().animate({
+                width: '-=10px',
+                height: '-=10px',
+                fontSize: '-=1px'
+            }, 'fast');});
+        $("#reservationBtn").click(function(){
+            $("#reservationForm").show();});
+    });
+
+    $(document).ready(function(){
+        var currentIndex = 0;
+        var slides = $('#slideshow img');
+        var totalSlides = slides.length;
+        function showSlide(index) {
+            slides.removeClass('active');
+            slides.eq(index).addClass('active');}
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            showSlide(currentIndex);}
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            showSlide(currentIndex);}
+        setInterval(nextSlide, 5000);
+    });
+
+
+
+</script>
+
+
+</body>
+</html>

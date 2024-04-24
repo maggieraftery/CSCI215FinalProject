@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jQuery Hello World Example</title>
+<script src="jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<div id="container"> This will change to Hello World! </div>
+<button id="button">Change Text</button>
+
+<script>
+$(document).ready(function(){
+  $("#button").click(function(){
+    $("#container").text("Hello World");
+  });
+});
+</script>
+
+</body>
+</html>
