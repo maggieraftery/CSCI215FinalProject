@@ -3,6 +3,7 @@ body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
+    background-color: #ebdecc
 }
 .contactInfo, .hours, .reservations, .reviews {
     background-color: #fff3e3;
@@ -12,13 +13,14 @@ body {
     max-width: 800px; 
     margin: 10px 20px 50px 20px;
     text-align: center;
+    font-family: "Tenor Sans", sans-serif;
 }
 
 .container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1230px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 40px;
     border: 2px solid #ac4141;
@@ -28,7 +30,7 @@ body {
     width: 90%;
 }
 
-.reservationForm {
+#reservationForm, #message {
     background-color: #fff3e3;
     border: 2px solid #ac4141; 
     border-radius: 10px; 
@@ -51,30 +53,60 @@ header {
 header h1 {
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-size: 300%;
-    padding-left: 10px;}
+    padding-left: 40px;
+    font-family: "Satisfy", cursive;}
+
 
 nav ul {
     list-style-type: none;
     margin: 0;
-    padding: 0 20px 0 0;}
+    padding: 0;
+    font-family: "Tenor Sans", sans-serif;position: relative;
+    z-index: 1;
+}
 nav ul li {
-    display: inline;
-    margin-left: 10px;}
+    display: inline-block;
+    margin-left: 10px;
+    position: relative;
+    border: 2px solid #ebdecc;
+    padding: 5px;
+}
+nav ul li:hover {
+    background-color: #ebdecc40;
+}
 nav ul li:first-child {
     margin-left: 0;}
+nav ul li:last-child {
+    margin-right: 40px;}
 nav ul li a {
-    color: white;}
-
+    color: white;
+    text-decoration: none;}
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ac4141;
+    padding: 10px;
+    z-index: 2;
+}
+nav ul ul li {
+    display: block;
+    margin: 5px 0;
+}
+nav ul li:hover > ul {
+    display: block;
+}
+    
 
 #hero {
-    text-align: center;
-}
+    text-align: center;}
 
 footer {
     background-color: #ac4141;
     color: #fff;
     text-align: center;
-    padding: 10px;
+    padding: 20px;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -82,8 +114,8 @@ footer {
 
 #slideshow {
     overflow: hidden;
-    width: 900px; /* Adjust width as needed */
-    height: 550px; /* Adjust height as needed */
+    width: 985px;
+    height: 550px;
     margin: 0 auto;
     position: relative;
 }
@@ -91,7 +123,7 @@ footer {
 #slideshow img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensure images cover the entire container */
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;

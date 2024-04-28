@@ -8,13 +8,22 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="jquery-3.7.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Tenor+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
     <h1>Charleston Pizza</h1>
     <nav>
-        <ul>
-            <li><a href="#">Menu</a></li>
+        <ul id="menu">
+            <li><a href="#">Menu</a>
+                <ul>
+                    <li><a href="#">Lunch</a></li>
+                    <li><a href="#">Dinner</a></li>
+                    <li><a href="#">Drinks</a></li>
+                </ul>
+            </li>
             <li><a href="#">Directions</a></li>
             <li><a href="#">Ordering</a></li>
             <li><a href="#">Reviews</a></li>
@@ -42,13 +51,13 @@
             <p>Fill in more information here...</p>
         </div>
         <div id="reservationForm" style="display: none;">
-            <p></p>
             <input type="text" placeholder="Name">
             <input type="text" placeholder="Number of Guests">
             <input type="text" placeholder="Date (YYYY-MM-DD)">
             <input type="text" placeholder="Time">
             <button id="submitReservation">Submit</button>
         </div>
+        <div id="message" style="display: none;"></div>
         <div class="contactInfo">
             <h2>Contact Us</h2>
             <p>123 Main Street, City, Country</p>
@@ -64,40 +73,77 @@
 
 <script src="jquery-3.7.1.min.js"></script>
 <script>
+    // animate elements
     $(document).ready(function(){
+        // when hovering over these elements
         $(".contactInfo, .hours, .reservations, .reviews").hover(function(){
+            // animate width, height and font size
             $(this).stop().animate({
                 width: '+=10px',
                 height: '+=10px',
                 fontSize: '+=1px'
             }, 'fast');
         }, function(){
+            // and decrease element size when hover stops
             $(this).stop().animate({
                 width: '-=10px',
                 height: '-=10px',
                 fontSize: '-=1px'
             }, 'fast');});
+    
+    // reservation form
+    // when button is clicken
         $("#reservationBtn").click(function(){
+        // show input boxes
             $("#reservationForm").show();});
     });
 
+    // submit reservation
+    // when button is clicked
+    $("#submitReservation").click(function(){
+    // show message element
+    $("#message").show(); 
+    // write that the reservation was submitted
+    $("#message").text("Reservation submitted!"); 
+    // hide the input boxes
+    $("#reservationForm").hide(); 
+});
+
+    // slideshow
     $(document).ready(function(){
+        // index of current slide
         var currentIndex = 0;
-        var slides = $('#slideshow img');
+        // select images within slideshow id
+        var slides = $('#slideshow img'); 
+        // total number of slides
         var totalSlides = slides.length;
         function showSlide(index) {
+            // remove active class from the slide
             slides.removeClass('active');
+            // add the active class to the slide at the index 
             slides.eq(index).addClass('active');}
         function nextSlide() {
+            // update the index
             currentIndex = (currentIndex + 1) % totalSlides;
+            // show the next slide
             showSlide(currentIndex);}
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-            showSlide(currentIndex);}
+        // call the function and change it every 5 seconds
         setInterval(nextSlide, 5000);
     });
 
-
+    // nav menu
+    // when the document as loaded
+    $(document).ready(function(){
+    // selects menu element and initializes it as an accordion menu
+    $("#menu").accordion({
+        // allows sections to collapse
+        collapsible: true,
+        // starts with sections collapsed
+        active: false, 
+        // adjusts heights of sections
+        heightStyle: "content"
+    });
+});
 
 </script>
 
